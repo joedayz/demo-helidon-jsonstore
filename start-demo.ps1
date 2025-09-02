@@ -18,7 +18,7 @@ try {
     podman-compose --version | Out-Null
 } catch {
     Write-Host "❌ Error: Podman Compose is not available" -ForegroundColor Red
-    Write-Host "   Por favor, instala Podman Compose o usa 'podman-compose'" -ForegroundColor Yellow
+    Write-Host "   Please install Podman Compose or use 'podman-compose'" -ForegroundColor Yellow
     exit 1
 }
 
@@ -46,9 +46,9 @@ while (-not $ready -and $attempts -lt $maxAttempts) {
 }
 
 if ($ready) {
-    Write-Host " Oracle Database está listo!" -ForegroundColor Green
+    Write-Host "✅ Oracle Database is ready!" -ForegroundColor Green
     Write-Host "   Usuario: helidon_user" -ForegroundColor Cyan
-    Write-Host "   Contraseña: helidon123" -ForegroundColor Cyan
+    Write-Host "   Password: helidon123" -ForegroundColor Cyan
     Write-Host "   SID: FREE" -ForegroundColor Cyan
     Write-Host "   Puerto: 1521" -ForegroundColor Cyan
     
@@ -61,9 +61,9 @@ if ($ready) {
     if ($LASTEXITCODE -eq 0) {
         Write-Host " Proyecto compilado exitosamente!" -ForegroundColor Green
         Write-Host ""
-        Write-Host " Iniciando aplicación Helidon..." -ForegroundColor Blue
-        Write-Host "   La aplicación estará disponible en: http://localhost:8080" -ForegroundColor Cyan
-        Write-Host "   Presiona Ctrl+C para detener la aplicación" -ForegroundColor Yellow
+        Write-Host "🚀 Starting Helidon application..." -ForegroundColor Blue
+        Write-Host "   The application will be available at: http://localhost:8080" -ForegroundColor Cyan
+        Write-Host "   Press Ctrl+C to stop the application" -ForegroundColor Yellow
         Write-Host ""
         
         java -jar target/demo-helidon-jsonstore.jar

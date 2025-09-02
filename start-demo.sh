@@ -6,14 +6,14 @@ echo "=================================================="
 # Check if Podman is running
 if ! podman info > /dev/null 2>&1; then
     echo "❌ Error: Podman is not running"
-    echo "   Por favor, inicia Podman"
+    echo "   Please start Podman"
     exit 1
 fi
 
 # Check if Podman Compose is available
 if ! command -v podman-compose &> /dev/null; then
     echo "❌ Error: Podman Compose is not available"
-    echo "   Por favor, instala Podman Compose o usa 'podman-compose'"
+    echo "   Please install Podman Compose or use 'podman-compose'"
     exit 1
 fi
 
@@ -29,9 +29,9 @@ while ! podman-compose exec -T oracle-db sqlplus -L sys/Oradoc_db1@//localhost:1
     sleep 30
 done
 
-echo "✅ Oracle Database está listo!"
+echo "✅ Oracle Database is ready!"
 echo "   Usuario: helidon_user"
-echo "   Contraseña: helidon123"
+echo "   Password: helidon123"
 echo "   SID: FREE"
 echo "   Puerto: 1521"
 
@@ -42,8 +42,8 @@ mvn clean package -DskipTests
 if [ $? -eq 0 ]; then
     echo "✅ Proyecto compilado exitosamente!"
     echo ""
-    echo "🚀 Iniciando aplicación Helidon..."
-    echo "   La aplicación estará disponible en: http://localhost:8080"
+    echo "🚀 Starting Helidon application..."
+    echo "   The application will be available at: http://localhost:8080"
     echo "   Presiona Ctrl+C para detener la aplicación"
     echo ""
     

@@ -1,7 +1,7 @@
--- Script de inicialización para Oracle Database 23c Free
--- Este script se ejecuta automáticamente al iniciar el contenedor
+-- Initialization script for Oracle Database 23c Free
+-- This script runs automatically when starting the container
 
--- Esperar a que la base de datos esté completamente lista
+-- Wait for database to be completely ready
 DECLARE
   v_status VARCHAR2(20);
 BEGIN
@@ -13,10 +13,10 @@ BEGIN
 END;
 /
 
--- Crear usuario para la aplicación Helidon
+-- Create user for Helidon application
 CREATE USER C##helidon_user IDENTIFIED BY helidon123;
 
--- Otorgar privilegios básicos necesarios
+-- Grant basic necessary privileges
 GRANT CONNECT, RESOURCE TO C##helidon_user;
 GRANT CREATE SESSION TO C##helidon_user;
 GRANT CREATE TABLE TO C##helidon_user;
@@ -27,7 +27,7 @@ GRANT UNLIMITED TABLESPACE TO C##helidon_user;
 -- Otorgar privilegios para JSON (Oracle 23c)
 GRANT EXECUTE ON DBMS_JSON TO C##helidon_user;
 
--- Crear un tablespace dedicado para la aplicación
+-- Create a dedicated tablespace for the application
 CREATE TABLESPACE helidon_data
 DATAFILE 'helidon_data.dbf' SIZE 100M
 AUTOEXTEND ON NEXT 10M MAXSIZE 500M;
@@ -47,7 +47,7 @@ VALUES ('Oracle Database 23c Free inicializado correctamente para Helidon JSON S
 
 COMMIT;
 
--- Mostrar confirmación
+-- Show confirmation
 SELECT 'Usuario C##helidon_user creado exitosamente' AS status FROM dual;
 SELECT username, account_status, default_tablespace 
 FROM dba_users 
