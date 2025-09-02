@@ -308,4 +308,4 @@ public class BulkheadExecutor {
 
 ---
 
-**Need more details?** Check [ARTICLE.md](../ARTICLE.md) for practical implementation or open an issue on GitHub.
+**Need more details?** Check our [blog.joedayz.pe](https://blog.joedayz.pe/java-virtual-threads-in-action-managing-expenses-with-helidon-nima-and-oracle-database-23ai-json-store) for practical implementation or open an issue on GitHub.
