@@ -99,7 +99,7 @@ curl http://localhost:8081/virtual-threads/info
 
 ## 📚 More Information
 
-- **Technical Article**: [ARTICLE.md](ARTICLE.md) - Detailed implementation and comparisons
+- **Technical Article**: [https://blog.joedayz.pe/](https://blog.joedayz.pe/java-virtual-threads-in-action-managing-expenses-with-helidon-nima-and-oracle-database-23ai-json-store) - Detailed implementation and comparisons
 - **Documentation**: [docs/](docs/) - Advanced guides and examples
 
 ## 🤝 Contributing
@@ -116,4 +116,4 @@ This project is licensed under the [Apache 2.0](LICENSE) license.
 
 ---
 
-**Need help?** Check [ARTICLE.md](ARTICLE.md) for technical details or open an issue on GitHub.
+**Need help?** Check [https://blog.joedayz.pe/](https://blog.joedayz.pe/java-virtual-threads-in-action-managing-expenses-with-helidon-nima-and-oracle-database-23ai-json-store) for technical details or open an issue on GitHub.
