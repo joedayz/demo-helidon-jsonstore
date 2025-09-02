@@ -4,20 +4,20 @@
 Write-Host " Iniciando Demo Helidon con Oracle Database 23c..." -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
 
-# Verificar si Podman está ejecutándose
+# Check if Podman is running
 try {
     podman info | Out-Null
 } catch {
-    Write-Host " Error: Podman no está ejecutándose" -ForegroundColor Red
-    Write-Host "   Por favor, inicia Podman" -ForegroundColor Yellow
+    Write-Host "❌ Error: Podman is not running" -ForegroundColor Red
+    Write-Host "   Please start Podman" -ForegroundColor Yellow
     exit 1
 }
 
-# Verificar si Podman Compose está disponible
+# Check if Podman Compose is available
 try {
     podman-compose --version | Out-Null
 } catch {
-    Write-Host " Error: Podman Compose no está disponible" -ForegroundColor Red
+    Write-Host "❌ Error: Podman Compose is not available" -ForegroundColor Red
     Write-Host "   Por favor, instala Podman Compose o usa 'podman-compose'" -ForegroundColor Yellow
     exit 1
 }
@@ -25,17 +25,17 @@ try {
 Write-Host " Iniciando Oracle Database 23c Free..." -ForegroundColor Blue
 podman-compose up -d oracle-db
 
-Write-Host " Esperando a que Oracle Database esté listo..." -ForegroundColor Yellow
-Write-Host "   Esto puede tomar 3-5 minutos en la primera ejecución..." -ForegroundColor Yellow
+Write-Host "⏳ Waiting for Oracle Database to be ready..." -ForegroundColor Yellow
+Write-Host "   This may take 3-5 minutes on first run..." -ForegroundColor Yellow
 
-# Esperar a que Oracle esté listo
+# Wait for Oracle to be ready
 $ready = $false
 $attempts = 0
 $maxAttempts = 20
 
 while (-not $ready -and $attempts -lt $maxAttempts) {
     $attempts++
-    Write-Host "   Intento $attempts/$maxAttempts - Esperando..." -ForegroundColor Gray
+    Write-Host "   Attempt $attempts/$maxAttempts - Waiting..." -ForegroundColor Gray
     
     try {
         podman-compose exec -T oracle-db sqlplus -L sys/Oradoc_db1@//localhost:1521/FREE as sysdba -c "SELECT 1 FROM dual" | Out-Null

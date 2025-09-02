@@ -28,22 +28,22 @@ class ExpenseResourceTest {
         assertThat(response.getStatus(), is(201));
         
         Expense createdExpense = response.readEntity(Expense.class);
-        assertThat(createdExpense.amount(), is(25.50));
-        assertThat(createdExpense.method(), is("CARD"));
-        assertThat(createdExpense.category(), is("FOOD"));
-        assertThat(createdExpense.description(), is("Lunch at restaurant"));
-        assertThat(createdExpense.id(), is(notNullValue()));
+        assertThat(createdExpense.getAmount(), is(25.50));
+        assertThat(createdExpense.getMethod(), is("CARD"));
+        assertThat(createdExpense.getCategory(), is("FOOD"));
+        assertThat(createdExpense.getDescription(), is("Lunch at restaurant"));
+        assertThat(createdExpense.getId(), is(notNullValue()));
         
         // Get the expense by ID
-        Response getResponse = webTarget.path("/expenses/" + createdExpense.id())
+        Response getResponse = webTarget.path("/expenses/" + createdExpense.getId())
                 .request(MediaType.APPLICATION_JSON)
                 .get();
         
         assertThat(getResponse.getStatus(), is(200));
         
         Expense retrievedExpense = getResponse.readEntity(Expense.class);
-        assertThat(retrievedExpense.id(), is(createdExpense.id()));
-        assertThat(retrievedExpense.amount(), is(25.50));
+        assertThat(retrievedExpense.getId(), is(createdExpense.getId()));
+        assertThat(retrievedExpense.getAmount(), is(25.50));
     }
 
     @Test

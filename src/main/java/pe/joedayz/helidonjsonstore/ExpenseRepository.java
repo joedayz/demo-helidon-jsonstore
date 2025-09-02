@@ -18,7 +18,7 @@ public class ExpenseRepository {
     private EntityManager entityManager;
 
     public Expense save(Expense expense) {
-        if (expense.id() == null) {
+        if (expense.getId() == null) {
             entityManager.persist(expense);
             return expense;
         } else {

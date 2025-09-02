@@ -3,16 +3,16 @@
 echo "🚀 Iniciando Demo Helidon con Oracle Database 23c..."
 echo "=================================================="
 
-# Verificar si Podman está ejecutándose
+# Check if Podman is running
 if ! podman info > /dev/null 2>&1; then
-    echo "❌ Error: Podman no está ejecutándose"
+    echo "❌ Error: Podman is not running"
     echo "   Por favor, inicia Podman"
     exit 1
 fi
 
-# Verificar si Podman Compose está disponible
+# Check if Podman Compose is available
 if ! command -v podman-compose &> /dev/null; then
-    echo "❌ Error: Podman Compose no está disponible"
+    echo "❌ Error: Podman Compose is not available"
     echo "   Por favor, instala Podman Compose o usa 'podman-compose'"
     exit 1
 fi
@@ -20,12 +20,12 @@ fi
 echo "📦 Iniciando Oracle Database 23c Free..."
 podman-compose up -d oracle-db
 
-echo "⏳ Esperando a que Oracle Database esté listo..."
-echo "   Esto puede tomar 3-5 minutos en la primera ejecución..."
+echo "⏳ Waiting for Oracle Database to be ready..."
+echo "   This may take 3-5 minutes on first run..."
 
-# Esperar a que Oracle esté listo
+# Wait for Oracle to be ready
 while ! podman-compose exec -T oracle-db sqlplus -L sys/Oradoc_db1@//localhost:1521/FREE as sysdba -c "SELECT 1 FROM dual" > /dev/null 2>&1; do
-    echo "   Esperando... (Ctrl+C para cancelar)"
+    echo "   Waiting... (Ctrl+C to cancel)"
     sleep 30
 done
 

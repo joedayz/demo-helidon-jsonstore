@@ -38,9 +38,9 @@ services:
       - ./sqlplus-init.sql:/opt/oracle/scripts/startup/01-sqlplus-init.sql:ro
     command: >
       bash -c "
-        echo 'Esperando a que Oracle Database esté listo...' &&
+        echo 'Waiting for Oracle Database to be ready...' &&
         while ! sqlplus -L helidon_user/helidon123@//oracle-db:1521/FREE -c 'SELECT 1 FROM dual' > /dev/null 2>&1; do
-          echo 'Esperando...' &&
+          echo 'Waiting...' &&
           sleep 10
         done &&
         echo 'Oracle Database está listo!' &&

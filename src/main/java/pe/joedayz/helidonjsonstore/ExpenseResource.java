@@ -68,8 +68,8 @@ public class ExpenseResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         
-        Expense updatedExpense = new Expense(id, expense.amount(), expense.method(), 
-                                          expense.category(), expense.createdAt(), expense.description());
+        Expense updatedExpense = new Expense(id, expense.getAmount(), expense.getMethod(), 
+                                          expense.getCategory(), expense.getCreatedAt(), expense.getDescription());
         Expense saved = oracleJsonService.update(updatedExpense);
         return Response.ok(saved).build();
     }

@@ -21,7 +21,7 @@ public class OracleJsonService {
      * Save expense using Oracle JSON Store capabilities
      */
     public Expense save(Expense expense) {
-        if (expense.id() == null) {
+        if (expense.getId() == null) {
             entityManager.persist(expense);
             return expense;
         } else {
