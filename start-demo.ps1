@@ -47,10 +47,10 @@ while (-not $ready -and $attempts -lt $maxAttempts) {
 
 if ($ready) {
     Write-Host "✅ Oracle Database is ready!" -ForegroundColor Green
-    Write-Host "   Usuario: helidon_user" -ForegroundColor Cyan
+    Write-Host "   User: helidon_user" -ForegroundColor Cyan
     Write-Host "   Password: helidon123" -ForegroundColor Cyan
     Write-Host "   SID: FREE" -ForegroundColor Cyan
-    Write-Host "   Puerto: 1521" -ForegroundColor Cyan
+    Write-Host "   Port: 1521" -ForegroundColor Cyan
     
     Write-Host ""
     Write-Host " Compilando proyecto Helidon..." -ForegroundColor Blue
@@ -59,7 +59,7 @@ if ($ready) {
     mvn clean package -DskipTests
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Host " Proyecto compilado exitosamente!" -ForegroundColor Green
+        Write-Host "✅ Project compiled successfully!" -ForegroundColor Green
         Write-Host ""
         Write-Host "🚀 Starting Helidon application..." -ForegroundColor Blue
         Write-Host "   The application will be available at: http://localhost:8080" -ForegroundColor Cyan

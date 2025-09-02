@@ -43,8 +43,8 @@ services:
           echo 'Waiting...' &&
           sleep 10
         done &&
-        echo 'Oracle Database está listo!' &&
-        echo 'Conectando como helidon_user...' &&
+        echo 'Oracle Database is ready!' &&
+        echo 'Connecting as helidon_user...' &&
         sqlplus helidon_user/helidon123@//oracle-db:1521/FREE
       "
     networks:

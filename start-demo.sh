@@ -30,21 +30,21 @@ while ! podman-compose exec -T oracle-db sqlplus -L sys/Oradoc_db1@//localhost:1
 done
 
 echo "✅ Oracle Database is ready!"
-echo "   Usuario: helidon_user"
+echo "   User: helidon_user"
 echo "   Password: helidon123"
 echo "   SID: FREE"
-echo "   Puerto: 1521"
+echo "   Port: 1521"
 
 echo ""
 echo "🔧 Compilando proyecto Helidon..."
 mvn clean package -DskipTests
 
 if [ $? -eq 0 ]; then
-    echo "✅ Proyecto compilado exitosamente!"
+    echo "✅ Project compiled successfully!"
     echo ""
     echo "🚀 Starting Helidon application..."
     echo "   The application will be available at: http://localhost:8080"
-    echo "   Presiona Ctrl+C para detener la aplicación"
+    echo "   Press Ctrl+C to stop the application"
     echo ""
     
     java -jar target/demo-helidon-jsonstore.jar

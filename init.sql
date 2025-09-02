@@ -32,7 +32,7 @@ CREATE TABLESPACE helidon_data
 DATAFILE 'helidon_data.dbf' SIZE 100M
 AUTOEXTEND ON NEXT 10M MAXSIZE 500M;
 
--- Asignar tablespace por defecto al usuario
+-- Assign default tablespace to user
 ALTER USER C##helidon_user DEFAULT TABLESPACE helidon_data;
 
 -- Crear un esquema de ejemplo (opcional)
@@ -48,7 +48,7 @@ VALUES ('Oracle Database 23c Free inicializado correctamente para Helidon JSON S
 COMMIT;
 
 -- Show confirmation
-SELECT 'Usuario C##helidon_user creado exitosamente' AS status FROM dual;
+SELECT 'User C##helidon_user created successfully' AS status FROM dual;
 SELECT username, account_status, default_tablespace 
 FROM dba_users 
 WHERE username = 'C##HELIDON_USER';
